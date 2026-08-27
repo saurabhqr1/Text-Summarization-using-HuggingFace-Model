@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Text Summarizer</title>
+<style>
+    body { font-family: Arial, sans-serif; max-width: 700px; margin: 40px auto; padding: 0 20px; }
+    h1 { color: #333; margin-bottom: 5px; }
+    p.subtitle { color: #666; margin-top: 0; }
+    label { display: block; font-weight: bold; margin-bottom: 6px; margin-top: 20px; color: #333; }
+    textarea { width: 100%; height: 180px; font-size: 15px; padding: 10px; box-sizing: border-box; border: 1px solid #ccc; border-radius: 6px; font-family: inherit; }
+    button { margin-top: 14px; padding: 10px 24px; font-size: 15px; background: #2563eb; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    button:disabled { background: #93b4f0; cursor: not-allowed; }
+    .section { margin-top: 25px; }
+    #result { margin-top: 8px; padding: 15px; background: #f3f4f6; border-radius: 6px; white-space: pre-wrap; min-height: 60px; border: 1px solid #e0e0e0; }
+</style>
+</head>
+<body>
+    <h1>Text Summarizer</h1>
+    <p class="subtitle">Paste a conversation below and get an AI-generated summary.</p>
+
+    <div class="section">
+        <label for="inputText">Conversation</label>
+        <textarea id="inputText" placeholder="Paste your conversation here...
+
+Example:
+Hannah: Hey, do you have Betty's number?
+Amanda: Lemme check
+Amanda: Sorry, can't find it.
+Amanda: Ask Larry
+Amanda: He called her yesterday
+Hannah: I don't know him well
+Hannah: OK thanks"></textarea>
+
+        <button id="summarizeBtn" onclick="summarize()">Summarize</button>
+    </div>
+
+    <div class="section">
+        <label>Summary</label>
+        <div id="result">Your summary will appear here.</div>
+    </div>
+
+    <script>
+        async function summarize() {
+            var inputText = document.getElementById("inputText").value;
+            var resultDiv = document.getElementById("result");
+            var btn = document.getElementById("summarizeBtn");
+
+            if (inputText.trim() === "") {
+                resultDiv.innerText = "Please enter a conversation first.";
+                return;
+            }
+
+            btn.disabled = true;
+            btn.innerText = "Summarizing...";
+            resultDiv.innerText = "Working on it...";
+
+            try {
+                var url = "/predict?text=" + encodeURIComponent(inputText);
+                var response = await fetch(url, { method: "POST" });
+
+                if (!response.ok) {
+                    throw new Error("Server returned status " + response.status);
+                }
+
+                var summary = await response.text();
+                var cleaned = summary.replace(/^"|"$/g, "");
+                resultDiv.innerText = cleaned;
+            } catch (err) {
+                resultDiv.innerText = "Error: " + err.message;
+            } finally {
+                btn.disabled = false;
+                btn.innerText = "Summarize";
+            }
+        }
+    </script>
+</body>
+</html>

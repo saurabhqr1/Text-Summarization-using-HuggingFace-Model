@@ -1,0 +1,7 @@
+﻿venv/
+artifacts/
+logs/
+__pycache__/
+*.pyc
+project_for_colab.zip
+artifacts_trained.zip
