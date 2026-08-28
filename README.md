@@ -1,141 +1,190 @@
+[README (3).md](https://github.com/user-attachments/files/31554216/README.3.md)
 
-# Text Summarization using Hugging Face (Pegasus + SAMSum)
+<h1 align="center">
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&pause=1000&color=6E40C9&center=true&vCenter=true&width=700&lines=Hi+%F0%9F%91%8B%2C+I'm+Saurabh+Singh;Aspiring+AI+Engineer;Building+Real-World+Projects" alt="Typing SVG" />
+</h1>
 
-A fine-tuned **Pegasus** model for abstractive text summarization, trained on the **SAMSum** conversational dataset, served through a **FastAPI** backend with a simple web UI.
-
-This project is a modernized version of the original tutorial-style repo, updated to run on current Python (3.10/3.11) and current library versions (Transformers 4.46, Datasets 3.1, Accelerate 1.1, Evaluate 0.4), with several bug fixes and a lightweight frontend added on top.
+<p align="center">
+  <a href="https://www.linkedin.com/in/saurabh-singh-205781308" target="_blank">
+    <img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"/>
+  </a>
+  <a href="mailto:saurabhsinghqr@gmail.com">
+    <img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"/>
+  </a>
+  <a href="https://github.com/saurabhqr1" target="_blank">
+    <img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"/>
+  </a>
+  <img src="https://komarev.com/ghpvc/?username=saurabhqr1&style=for-the-badge&color=6E40C9" alt="profile views"/>
+</p>
 
 ---
 
-## Features
+## 🧑‍💻 About Me
 
-- End-to-end ML pipeline: data ingestion → validation → transformation → training → evaluation
-- Fine-tunes `google/pegasus-cnn_dailymail` on the SAMSum dialogue-summarization dataset
-- FastAPI backend exposing a `/predict` endpoint
-- Simple built-in web page (`templates/index.html`) to paste a conversation and get a summary
-- Trainable locally (CPU, slow) or on a free GPU via Google Colab (fast)
-
----
-
-## Project Structure
-
-```
-├── app.py                     # FastAPI app (frontend + /predict + /train routes)
-├── main.py                    # Runs the full training pipeline (5 stages)
-├── config/config.yaml         # Paths, URLs, and directory configuration
-├── params.yaml                # Training hyperparameters
-├── templates/index.html       # Web UI for the summarizer
-├── src/textSummarizer/
-│   ├── config/                # Configuration manager
-│   ├── conponents/            # Pipeline stage implementations
-│   ├── entity/                # Config dataclasses
-│   ├── pipeline/              # Stage runners + prediction pipeline
-│   └── utils/                 # Shared helper functions
-├── requirements.txt
-└── Dockerfile
+```python
+saurabh = {
+    "role"        : "AI/ML Student & Cybersecurity Enthusiast",
+    "focus"       : ["Machine Learning", "NLP", "Generative AI"],
+    "languages"   : ["Python", "Java", "C", "C++"],
+    "certified"   : "Oracle Cloud Infrastructure 2025 — Generative AI Professional",
+    "currently"   : "Exploring LLMs and RAG pipelines",
+    "goal"        : "Build practical, well-engineered ML systems"
+}
 ```
 
 ---
 
-## Setup
+## 🛠️ Tech Stack
 
-### 1. Clone the repository
+### Languages
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Java](https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=openjdk&logoColor=white)
+![C](https://img.shields.io/badge/C-00599C?style=for-the-badge&logo=c&logoColor=white)
+![C++](https://img.shields.io/badge/C++-00599C?style=for-the-badge&logo=cplusplus&logoColor=white)
 
-```bash
-git clone https://github.com/saurabhqr1/Text-Summarization-using-HuggingFace-Model.git
-cd Text-Summarization-using-HuggingFace-Model
-```
+### AI / ML & NLP
+![PyTorch](https://img.shields.io/badge/PyTorch-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white)
+![HuggingFace](https://img.shields.io/badge/Hugging%20Face-FFD21E?style=for-the-badge&logo=huggingface&logoColor=black)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![scikit-learn](https://img.shields.io/badge/scikit--learn-F7931E?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![NLTK](https://img.shields.io/badge/NLTK-154f3c?style=for-the-badge&logoColor=white)
+![spaCy](https://img.shields.io/badge/spaCy-09A3D5?style=for-the-badge&logo=spacy&logoColor=white)
 
-### 2. Create a virtual environment (Python 3.10 or 3.11)
-
-```bash
-python -m venv venv
-# Windows
-.\venv\Scripts\Activate.ps1
-# macOS/Linux
-source venv/bin/activate
-```
-
-### 3. Install dependencies
-
-```bash
-pip install --upgrade pip
-pip install -r requirements.txt
-```
-
----
-
-## Training the Model
-
-Run the full pipeline (data ingestion → validation → transformation → training → evaluation):
-
-```bash
-python main.py
-```
-
-**Note on hardware:** training Pegasus on CPU is very slow (potentially many hours). Training on a free GPU (e.g. Google Colab with a T4) typically completes in under an hour. See the notes at the bottom of this file for the Colab workflow.
-
-Trained artifacts are saved locally to:
-```
-artifacts/model_trainer/pegasus-samsum-model/
-artifacts/model_trainer/tokenizer/
-```
-
-These are excluded from version control (see `.gitignore`) since the model checkpoint is several GB.
+### Cloud & Tools
+![FastAPI](https://img.shields.io/badge/FastAPI-009688?style=for-the-badge&logo=fastapi&logoColor=white)
+![Oracle Cloud](https://img.shields.io/badge/Oracle_OCI-F80000?style=for-the-badge&logo=oracle&logoColor=white)
+![Jupyter](https://img.shields.io/badge/Jupyter-F37626?style=for-the-badge&logo=jupyter&logoColor=white)
+![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)
+![VS Code](https://img.shields.io/badge/VS_Code-007ACC?style=for-the-badge&logo=visual-studio-code&logoColor=white)
+![Kali Linux](https://img.shields.io/badge/Kali_Linux-557C94?style=for-the-badge&logo=kalilinux&logoColor=white)
 
 ---
 
-## Running the App
+## 📌 Featured Project
 
-Once a trained model exists in `artifacts/model_trainer/`:
-
-```bash
-python app.py
-```
-
-Then open:
-```
-http://localhost:8080
-```
-
-This loads a simple web page where you can paste a conversation and click **Summarize** to get a generated summary. The interactive API docs are also available at `http://localhost:8080/docs`.
-
----
-
-## Training on Google Colab (Recommended if you don't have a GPU)
-
-1. Zip the project (excluding `venv/` and `artifacts/`) and upload it to Colab
-2. Enable a free T4 GPU: **Runtime → Change runtime type → T4 GPU**
-3. Extract the zip, `cd` into the folder, and run `pip install -r requirements.txt`
-4. Run `python main.py`
-5. Zip the resulting `artifacts/model_trainer/pegasus-samsum-model` and `tokenizer` folders and download them
-6. Extract into your local project's `artifacts/model_trainer/` folder and run `python app.py` locally
+<table>
+  <tr>
+    <td width="100%">
+      <h3>📝 Text Summarization — Hugging Face (Pegasus + SAMSum)</h3>
+      <p>An end-to-end NLP pipeline that fine-tunes Google's Pegasus model on the SAMSum conversational dataset for abstractive text summarization. Covers data ingestion, validation, transformation, training, and ROUGE-based evaluation — trained on a free GPU via Google Colab, and served through a FastAPI backend with a web interface for local testing.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+        <img src="https://img.shields.io/badge/PyTorch-EE4C2C?style=flat-square&logo=pytorch&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Transformers-FFD21E?style=flat-square&logo=huggingface&logoColor=black"/>
+        <img src="https://img.shields.io/badge/FastAPI-009688?style=flat-square&logo=fastapi&logoColor=white"/>
+      </p>
+      <a href="https://github.com/saurabhqr1/Text-Summarization-using-HuggingFace-Model">View Repo →</a>
+      <br><br>
+      <img src="https://raw.githubusercontent.com/saurabhqr1/Text-Summarization-using-HuggingFace-Model/main/assets/demo-screenshot.png" alt="Text Summarizer demo — web UI showing a conversation input and generated summary" width="800"/>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## Key Fixes vs. the Original Tutorial Repo
+## 📂 Other Repositories
 
-- `evaluation_strategy` → renamed to `eval_strategy` (Transformers 4.46+)
-- `Trainer(tokenizer=...)` → renamed to `Trainer(processing_class=...)`
-- `datasets.load_metric` (removed) → replaced with `evaluate.load('rouge')`
-- Fixed `params.yaml`'s `save_steps: 1e6` (PyYAML parses this as a string, not a float, without a decimal point) → changed to a plain integer
-- Fixed a bug where `eval_steps` was mistakenly read from `evaluation_strategy` in the configuration manager
-- `ModelTrainer` now actually uses values from `params.yaml` instead of hardcoded duplicates
-- Fixed the `DataValiadtion` typo → `DataValidation`
-- Added missing `sentencepiece` and `protobuf` dependencies required by the Pegasus tokenizer
-- Dockerfile updated from the end-of-life `python:3.8-slim-buster` to `python:3.11-slim`
+<table>
+  <tr>
+    <td width="50%">
+      <h3>🤖 Ai_module — NLP Text Classification</h3>
+      <p>Jupyter notebooks covering an NLP workflow — text preprocessing, feature extraction (BoW / TF-IDF), topic modeling with LDA & LSA, and text classification.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Python-3776AB?style=flat-square&logo=python&logoColor=white"/>
+        <img src="https://img.shields.io/badge/NLTK-154f3c?style=flat-square"/>
+        <img src="https://img.shields.io/badge/spaCy-09A3D5?style=flat-square&logo=spacy&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Scikit--learn-F7931E?style=flat-square&logo=scikit-learn&logoColor=white"/>
+      </p>
+      <a href="https://github.com/saurabhqr1/Ai_module">View Repo →</a>
+    </td>
+    <td width="50%">
+      <h3>🔐 CyberSecuritypdf — Practical Labs</h3>
+      <p>Documentation of hands-on cybersecurity exercises using tools such as Nmap, Zphisher, OpenStego, Cewl, and Crunch — covering hash cracking, OSINT, and web reconnaissance.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Kali_Linux-557C94?style=flat-square&logo=kalilinux&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Nmap-0E83CD?style=flat-square"/>
+        <img src="https://img.shields.io/badge/OSINT-333333?style=flat-square"/>
+      </p>
+      <a href="https://github.com/saurabhqr1/CyberSecuritypdf">View Repo →</a>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%">
+      <h3>☕ Java — DSA & Practice</h3>
+      <p>Java programs covering DSA problems (two sum, array rotation, binary search), pattern printing, OOP concepts, and number theory.</p>
+      <p>
+        <img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white"/>
+        <img src="https://img.shields.io/badge/DSA-blue?style=flat-square"/>
+      </p>
+      <a href="https://github.com/saurabhqr1/Java">View Repo →</a>
+    </td>
+    <td width="50%">
+      <h3>🧩 leetcode_solution — Problem Solving</h3>
+      <p>LeetCode problems solved in C++, C, and Java, with time/space complexity tracked via LeetHub.</p>
+      <p>
+        <img src="https://img.shields.io/badge/C++-00599C?style=flat-square&logo=cplusplus&logoColor=white"/>
+        <img src="https://img.shields.io/badge/C-00599C?style=flat-square&logo=c&logoColor=white"/>
+        <img src="https://img.shields.io/badge/Java-ED8B00?style=flat-square&logo=openjdk&logoColor=white"/>
+      </p>
+      <a href="https://github.com/saurabhqr1/leetcode_solution">View Repo →</a>
+    </td>
+  </tr>
+</table>
 
 ---
 
-## Tech Stack
+## 📊 GitHub Stats
 
-- **Model:** Pegasus (`google/pegasus-cnn_dailymail`), fine-tuned on SAMSum
-- **Libraries:** Transformers, Datasets, Evaluate, Accelerate, PyTorch
-- **Backend:** FastAPI + Uvicorn
-- **Frontend:** Plain HTML/CSS/JS (Jinja2-rendered)
+<p align="center">
+  <img src="https://github-readme-stats.vercel.app/api?username=saurabhqr1&show_icons=true&theme=tokyonight&hide_border=true&count_private=true" height="165" alt="GitHub Stats"/>
+  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=saurabhqr1&layout=compact&theme=tokyonight&hide_border=true" height="165" alt="Top Languages"/>
+</p>
+
+<p align="center">
+  <img src="https://streak-stats.demolab.com/?user=saurabhqr1&theme=tokyonight&hide_border=true" alt="GitHub Streak"/>
+</p>
 
 ---
 
-## License
+## 🏆 Achievements
 
-See [LICENSE](LICENSE).
+<p align="center">
+  <img src="https://img.shields.io/badge/Oracle_OCI_2025-Generative_AI_Professional-F80000?style=for-the-badge&logo=oracle&logoColor=white"/>
+</p>
+
+- 🎖️ **Oracle Cloud Infrastructure 2025 Certified Generative AI Professional**
+- 📝 Fine-tuned a Transformer-based text summarization model (Pegasus + SAMSum) and served it via a FastAPI application
+- 📘 Active across AI/ML, NLP, and DSA repositories
+
+---
+
+## 📈 Currently Learning
+
+| Area | Topics |
+|---|---|
+| 🧠 **Generative AI** | Large Language Models, Prompt Engineering, RAG pipelines |
+| 🚀 **MLOps** | Model deployment, FastAPI apps |
+| 📐 **DSA** | Algorithms & competitive programming |
+
+---
+
+## 📫 Connect With Me
+
+<p align="left">
+  <a href="https://www.linkedin.com/in/saurabh-singh-205781308">
+    <img src="https://img.shields.io/badge/LinkedIn-Saurabh%20Singh-0077B5?style=flat-square&logo=linkedin"/>
+  </a>
+  &nbsp;
+  <a href="mailto:saurabhsinghqr@gmail.com">
+    <img src="https://img.shields.io/badge/Email-saurabhsinghqr@gmail.com-D14836?style=flat-square&logo=gmail&logoColor=white"/>
+  </a>
+</p>
+
+---
+
+<p align="center">
+  <img src="https://capsule-render.vercel.app/api?type=waving&color=6E40C9&height=80&section=footer" />
+</p>
+
