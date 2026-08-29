@@ -21,7 +21,7 @@ An end-to-end NLP pipeline that fine-tunes Google's **Pegasus** model on the **S
 Text summarization condenses a long piece of text into a shorter version while preserving its key meaning. This project focuses on **abstractive summarization** — instead of just extracting existing sentences, the model generates new sentences that capture the essence of a conversation.
 
 - **Base model:** [`google/pegasus-cnn_dailymail`](https://huggingface.co/google/pegasus-cnn_dailymail)
-- **Fine-tuning dataset:** [SAMSum](https://huggingface.co/datasets/samsum) — a corpus of messenger-style conversations paired with human-written summaries
+- **Fine-tuning dataset:** [SAMSum](https://huggingface.co/datasets/knkarthick/samsum) — a corpus of messenger-style conversations paired with human-written summaries
 - **Evaluation metric:** ROUGE (ROUGE-1, ROUGE-2, ROUGE-L, ROUGE-Lsum)
 - **Training environment:** Fine-tuned on a free Google Colab GPU
 - **Serving:** FastAPI backend with a simple web UI for local testing
